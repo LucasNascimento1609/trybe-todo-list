@@ -1,10 +1,20 @@
+function selectTask(event) {
+  const selectedTask = document.querySelector('.selected');
+  if (selectedTask !== null) {
+    selectedTask.classList.remove('selected');
+  }
+
+  event.target.classList.add('selected');
+}
+
 function addTask() {
-  const createLi = document.createElement('li');
-  const positionOl = document.getElementById('lista-tarefas');
+  const li = document.createElement('li');
+  const ol = document.getElementById('lista-tarefas');
   const inputText = document.getElementById('texto-tarefa');
 
-  createLi.innerText = inputText.value;
-  positionOl.appendChild(createLi);
+  li.innerText = inputText.value;
+  li.addEventListener('click', selectTask);
+  ol.appendChild(li);
 
   inputText.value = '';
 
@@ -12,5 +22,4 @@ function addTask() {
 }
 
 const button = document.getElementById('criar-tarefa');
-
 button.addEventListener('click', addTask);
