@@ -32,8 +32,21 @@ function addTaskOnEnterKey(keyEvent) {
   }
 }
 
-const button = document.getElementById('criar-tarefa');
-button.addEventListener('click', addTask);
+function clearTodoList() {
+  const ol = document.getElementById('lista-tarefas');
+
+  while (ol.children.length > 0) {
+    ol.removeChild(ol.children[0]);
+  }
+
+  // https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
+}
+
+const addButton = document.getElementById('criar-tarefa');
+addButton.addEventListener('click', addTask);
 
 const input = document.getElementById('texto-tarefa');
 input.addEventListener('keypress', addTaskOnEnterKey);
+
+const clearButton = document.getElementById('apaga-tudo');
+clearButton.addEventListener('click', clearTodoList);
