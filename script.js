@@ -42,6 +42,16 @@ function clearTodoList() {
   // https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
 }
 
+function clearCompletedTasks() {
+  const ol = document.getElementById('lista-tarefas');
+  const completedTasks = document.querySelectorAll('.completed');
+  console.log(completedTasks);
+
+  for (let index = completedTasks.length; index > 0; index -= 1) {
+    ol.removeChild(completedTasks[index - 1]);
+  }
+}
+
 const addButton = document.getElementById('criar-tarefa');
 addButton.addEventListener('click', addTask);
 
@@ -50,3 +60,8 @@ input.addEventListener('keypress', addTaskOnEnterKey);
 
 const clearButton = document.getElementById('apaga-tudo');
 clearButton.addEventListener('click', clearTodoList);
+
+const clearCompletedTasksButton = document.getElementById(
+  'remover-finalizados'
+);
+clearCompletedTasksButton.addEventListener('click', clearCompletedTasks);
