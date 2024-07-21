@@ -1,3 +1,5 @@
+const TODO_LIST = document.getElementById('lista-tarefas');
+
 function selectTask(event) {
   const selectedTask = document.querySelector('.selected');
   if (selectedTask !== null) {
@@ -11,57 +13,40 @@ function completedTask(event) {
   event.target.classList.toggle('completed');
 }
 
-function addTask() {
+export function addTask() {
+  console.log('OI');
   const li = document.createElement('li');
-  const ol = document.getElementById('lista-tarefas');
   const inputText = document.getElementById('texto-tarefa');
 
   li.innerText = inputText.value;
   li.addEventListener('click', selectTask);
   li.addEventListener('dblclick', completedTask);
-  ol.appendChild(li);
+  TODO_LIST.appendChild(li);
 
   inputText.value = '';
 
   /* Tomei como base essa explicação: https://pt.stackoverflow.com/questions/341329/inserir-li-e-a-via-javascript */
 }
 
-function addTaskOnEnterKey(keyEvent) {
+export function addTaskOnEnterKey(keyEvent) {
   if (keyEvent.key === 'Enter') {
     addTask();
   }
 }
 
-function clearTodoList() {
-  const ol = document.getElementById('lista-tarefas');
-
-  while (ol.children.length > 0) {
-    ol.removeChild(ol.children[0]);
+export function clearTodoList() {
+  while (TODO_LIST.children.length > 0) {
+    TODO_LIST.removeChild(TODO_LIST.children[0]);
   }
 
   // https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
 }
 
-function clearCompletedTasks() {
-  const ol = document.getElementById('lista-tarefas');
+export function clearCompletedTasks() {
   const completedTasks = document.querySelectorAll('.completed');
   console.log(completedTasks);
 
   for (let index = completedTasks.length; index > 0; index -= 1) {
-    ol.removeChild(completedTasks[index - 1]);
+    TODO_LIST.removeChild(completedTasks[index - 1]);
   }
 }
-
-const addButton = document.getElementById('criar-tarefa');
-addButton.addEventListener('click', addTask);
-
-const input = document.getElementById('texto-tarefa');
-input.addEventListener('keypress', addTaskOnEnterKey);
-
-const clearButton = document.getElementById('apaga-tudo');
-clearButton.addEventListener('click', clearTodoList);
-
-const clearCompletedTasksButton = document.getElementById(
-  'remover-finalizados'
-);
-clearCompletedTasksButton.addEventListener('click', clearCompletedTasks);
