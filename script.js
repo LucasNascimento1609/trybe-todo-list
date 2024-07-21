@@ -1,4 +1,4 @@
-const TODO_LIST = document.getElementByID('lista-tarefas');
+const TODO_LIST = document.getElementById('lista-tarefas');
 
 function selectTask(event) {
   const selectedTask = document.querySelector('.selected');
@@ -13,7 +13,8 @@ function completedTask(event) {
   event.target.classList.toggle('completed');
 }
 
-function addTask() {
+export function addTask() {
+  console.log('OI');
   const li = document.createElement('li');
   const inputText = document.getElementById('texto-tarefa');
 
@@ -27,13 +28,13 @@ function addTask() {
   /* Tomei como base essa explicação: https://pt.stackoverflow.com/questions/341329/inserir-li-e-a-via-javascript */
 }
 
-function addTaskOnEnterKey(keyEvent) {
+export function addTaskOnEnterKey(keyEvent) {
   if (keyEvent.key === 'Enter') {
     addTask();
   }
 }
 
-function clearTodoList() {
+export function clearTodoList() {
   while (TODO_LIST.children.length > 0) {
     TODO_LIST.removeChild(TODO_LIST.children[0]);
   }
@@ -41,7 +42,7 @@ function clearTodoList() {
   // https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
 }
 
-function clearCompletedTasks() {
+export function clearCompletedTasks() {
   const completedTasks = document.querySelectorAll('.completed');
   console.log(completedTasks);
 
@@ -49,17 +50,3 @@ function clearCompletedTasks() {
     TODO_LIST.removeChild(completedTasks[index - 1]);
   }
 }
-
-const addButton = document.getElementById('criar-tarefa');
-addButton.addEventListener('click', addTask);
-
-const input = document.getElementById('texto-tarefa');
-input.addEventListener('keypress', addTaskOnEnterKey);
-
-const clearButton = document.getElementById('apaga-tudo');
-clearButton.addEventListener('click', clearTodoList);
-
-const clearCompletedTasksButton = document.getElementById(
-  'remover-finalizados',
-);
-clearCompletedTasksButton.addEventListener('click', clearCompletedTasks);
