@@ -14,18 +14,21 @@ function completedTask(event) {
 }
 
 export function addTask() {
-  console.log('OI');
   const li = document.createElement('li');
-  const inputText = document.getElementById('texto-tarefa');
+  const taskInput = document.getElementById('texto-tarefa');
 
-  li.innerText = inputText.value;
+  if (!taskInput.value) {
+    return alert('Você deve escrever algo para criar uma tarefa');
+  }
+
+  li.innerText = taskInput.value;
+  li.style.cursor = 'pointer';
+  li.style.userSelect = 'none';
   li.addEventListener('click', selectTask);
   li.addEventListener('dblclick', completedTask);
   TODO_LIST.appendChild(li);
 
-  inputText.value = '';
-
-  /* Tomei como base essa explicação: https://pt.stackoverflow.com/questions/341329/inserir-li-e-a-via-javascript */
+  taskInput.value = '';
 }
 
 export function addTaskOnEnterKey(keyEvent) {
