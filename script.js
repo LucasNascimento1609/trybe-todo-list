@@ -38,11 +38,7 @@ export function addTaskOnEnterKey(keyEvent) {
 }
 
 export function clearTodoList() {
-  while (TODO_LIST.children.length > 0) {
-    TODO_LIST.removeChild(TODO_LIST.children[0]);
-  }
-
-  // https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
+  TODO_LIST.innerHTML = '';
 }
 
 export function clearCompletedTasks() {
