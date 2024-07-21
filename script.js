@@ -1,3 +1,5 @@
+const TODO_LIST = document.getElementByID('lista-tarefas');
+
 function selectTask(event) {
   const selectedTask = document.querySelector('.selected');
   if (selectedTask !== null) {
@@ -13,13 +15,12 @@ function completedTask(event) {
 
 function addTask() {
   const li = document.createElement('li');
-  const ol = document.getElementById('lista-tarefas');
   const inputText = document.getElementById('texto-tarefa');
 
   li.innerText = inputText.value;
   li.addEventListener('click', selectTask);
   li.addEventListener('dblclick', completedTask);
-  ol.appendChild(li);
+  TODO_LIST.appendChild(li);
 
   inputText.value = '';
 
@@ -33,22 +34,19 @@ function addTaskOnEnterKey(keyEvent) {
 }
 
 function clearTodoList() {
-  const ol = document.getElementById('lista-tarefas');
-
-  while (ol.children.length > 0) {
-    ol.removeChild(ol.children[0]);
+  while (TODO_LIST.children.length > 0) {
+    TODO_LIST.removeChild(TODO_LIST.children[0]);
   }
 
   // https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
 }
 
 function clearCompletedTasks() {
-  const ol = document.getElementById('lista-tarefas');
   const completedTasks = document.querySelectorAll('.completed');
   console.log(completedTasks);
 
   for (let index = completedTasks.length; index > 0; index -= 1) {
-    ol.removeChild(completedTasks[index - 1]);
+    TODO_LIST.removeChild(completedTasks[index - 1]);
   }
 }
 
@@ -62,6 +60,6 @@ const clearButton = document.getElementById('apaga-tudo');
 clearButton.addEventListener('click', clearTodoList);
 
 const clearCompletedTasksButton = document.getElementById(
-  'remover-finalizados'
+  'remover-finalizados',
 );
 clearCompletedTasksButton.addEventListener('click', clearCompletedTasks);
