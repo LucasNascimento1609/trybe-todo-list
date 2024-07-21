@@ -31,8 +31,8 @@ export function addTask() {
   taskInput.value = '';
 }
 
-export function addTaskOnEnterKey(keyEvent) {
-  if (keyEvent.key === 'Enter') {
+export function addTaskOnEnterKey({ key }) {
+  if (key === 'Enter') {
     addTask();
   }
 }
