@@ -1,12 +1,12 @@
 const TODO_LIST = document.getElementById('lista-tarefas');
+let SELECTED_TASK = null;
 
-function selectTask(event) {
-  const selectedTask = document.querySelector('.selected');
-  if (selectedTask !== null) {
-    selectedTask.classList.remove('selected');
+function selectTask({ target }) {
+  if (SELECTED_TASK) {
+    SELECTED_TASK.classList.remove('selected');
   }
-
-  event.target.classList.add('selected');
+  SELECTED_TASK = target;
+  SELECTED_TASK.classList.add('selected');
 }
 
 function completedTask(event) {
