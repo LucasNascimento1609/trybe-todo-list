@@ -42,10 +42,6 @@ export function clearTodoList() {
 }
 
 export function clearCompletedTasks() {
-  const completedTasks = document.querySelectorAll('.completed');
-  console.log(completedTasks);
-
-  for (let index = completedTasks.length; index > 0; index -= 1) {
-    TODO_LIST.removeChild(completedTasks[index - 1]);
-  }
+  const completedTasks = TODO_LIST.querySelectorAll('.completed');
+  completedTasks.forEach((task) => task.remove());
 }
