@@ -9,8 +9,8 @@ function selectTask({ target }) {
   SELECTED_TASK.classList.add('selected');
 }
 
-function completedTask(event) {
-  event.target.classList.toggle('completed');
+function toggleTaskCompletion({ target }) {
+  target.classList.toggle('completed');
 }
 
 export function addTask() {
@@ -25,7 +25,7 @@ export function addTask() {
   li.style.cursor = 'pointer';
   li.style.userSelect = 'none';
   li.addEventListener('click', selectTask);
-  li.addEventListener('dblclick', completedTask);
+  li.addEventListener('dblclick', toggleTaskCompletion);
   TODO_LIST.appendChild(li);
 
   taskInput.value = '';
