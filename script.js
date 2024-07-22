@@ -86,3 +86,9 @@ export function moveTaskDown() {
     TODO_LIST.insertBefore(SELECTED_TASK.nextElementSibling, SELECTED_TASK);
   }
 }
+
+export function removeSelectedTask() {
+  if (SELECTED_TASK) {
+    SELECTED_TASK.remove();
+  }
+}

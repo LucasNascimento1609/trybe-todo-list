@@ -7,6 +7,7 @@ import {
   loadTasks,
   moveTaskUp,
   moveTaskDown,
+  removeSelectedTask,
 } from './script.js';
 
 loadTasks();
@@ -18,3 +19,4 @@ document.getElementById('remover-finalizados').addEventListener('click', clearCo
 document.getElementById('salvar-tarefas').addEventListener('click', saveTasks);
 document.getElementById('mover-cima').addEventListener('click', moveTaskUp);
 document.getElementById('mover-baixo').addEventListener('click', moveTaskDown);
+document.getElementById('remover-selecionado').addEventListener('click', removeSelectedTask);
