@@ -74,3 +74,15 @@ export function loadTasks() {
     TODO_LIST.appendChild(li);
   });
 }
+
+export function moveTaskUp() {
+  if (SELECTED_TASK && SELECTED_TASK.previousElementSibling) {
+    TODO_LIST.insertBefore(SELECTED_TASK, SELECTED_TASK.previousElementSibling);
+  }
+}
+
+export function moveTaskDown() {
+  if (SELECTED_TASK && SELECTED_TASK.nextElementSibling) {
+    TODO_LIST.insertBefore(SELECTED_TASK.nextElementSibling, SELECTED_TASK);
+  }
+}

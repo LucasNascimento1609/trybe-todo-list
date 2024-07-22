@@ -5,6 +5,8 @@ import {
   clearCompletedTasks,
   saveTasks,
   loadTasks,
+  moveTaskUp,
+  moveTaskDown,
 } from './script.js';
 
 loadTasks();
@@ -14,3 +16,5 @@ document.getElementById('texto-tarefa').addEventListener('keypress', addTaskOnEn
 document.getElementById('apaga-tudo').addEventListener('click', clearTodoList);
 document.getElementById('remover-finalizados').addEventListener('click', clearCompletedTasks);
 document.getElementById('salvar-tarefas').addEventListener('click', saveTasks);
+document.getElementById('mover-cima').addEventListener('click', moveTaskUp);
+document.getElementById('mover-baixo').addEventListener('click', moveTaskDown);
